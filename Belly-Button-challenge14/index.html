@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BellyButton Biodiversity</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<style>
+  #loaderDiv {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+.animation {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s;
+  display: flex;
+  align-items: center;
+}
+
+#selectDropdownContainer, #demographicContainer {
+  display: none;
+  text-align: center;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+</style>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h2> Belly Button Biodiversity Dashboard</h2>
+        <p> Use the interactive charts below to explore the dataset</p>
+      </div>
+    </div>
+    <div id="loaderDiv"></div>
+    <div class="row animatebottom">
+      <div class="col-md-2">
+        <div class="well" id="selectDropdownContainer">
+          <h5>Test Subject ID No:</h5>
+          <select id="selectDropdown" onchange="onDropdownChange(this.value)"></select>
+        </div>
+        <div class="panel panel-primary" id="demographicContainer">
+          <div class="panel-heading">
+            <h3 class="panel-title">Demographic Info</h3>
+          </div>
+          <div id="sampleMetadata" class="panel-body"></div>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div id="barChart"></div>
+      </div>
+    </div>
+    <div class="row animation">
+      <div class="col-md-12">
+        <div id="bubbleChart"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="./static/js/app.js"></script>
+
+
+</body>
+
+</html>
